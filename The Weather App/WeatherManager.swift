@@ -9,6 +9,7 @@ import Foundation
 
 protocol WeatherManagerDiscription: AnyObject {
     func loadCities(with ids: [String], completion: @escaping (Result<CitiesResponse, Error>) -> Void)
+    func loadCity(with name: String, completion: @escaping (Result<CityResponse, Error>) -> Void)
 }
 
 enum NetworkError: Error {
@@ -49,7 +50,30 @@ final class WeatherManager: WeatherManagerDiscription {
         task.resume()
     }
     
-    
+    func loadCity(with name: String, completion: @escaping (Result<CityResponse, Error>) -> Void) {
+        guard let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?q=\(name)&units=metric&appid=\(Self.appId)") else { return }
+        
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            if let error = error {
+                completion(.failure(error))
+            }
+            
+            guard let data = data else {
+                completion(.failure(NetworkError.unexpected))
+                return
+            }
+            
+            let decoder = JSONDecoder()
+            
+            do {
+                let result  = try decoder.decode(CityResponse.self, from: data)
+                completion(.success(result))
+            } catch let error {
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
     
     private func url(for ids: [String]) -> URL? {
         var ids = ids.reduce("") { result, current in
