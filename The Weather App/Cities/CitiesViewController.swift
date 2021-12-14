@@ -12,7 +12,10 @@ import PinLayout
 final class CitiesViewController: UIViewController {
     private let output: CitiesViewOutput
     private let tableView = UITableView()
+    
+//    private var loadedCitites = ["gg","sggf"]
 
+    
     init(output: CitiesViewOutput) {
         self.output = output
         

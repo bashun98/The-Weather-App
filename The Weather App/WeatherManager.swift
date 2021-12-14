@@ -43,6 +43,7 @@ final class WeatherManager: WeatherManagerDiscription {
             do {
                 let result  = try decoder.decode(CitiesResponse.self, from: data)
                 completion(.success(result))
+                print(result)
             } catch let error {
                 completion(.failure(error))
             }
@@ -68,6 +69,7 @@ final class WeatherManager: WeatherManagerDiscription {
             do {
                 let result  = try decoder.decode(CityResponse.self, from: data)
                 completion(.success(result))
+                print(result)
             } catch let error {
                 completion(.failure(error))
             }

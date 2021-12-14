@@ -14,9 +14,22 @@ struct CitiesResponse: Decodable {
 struct CityResponse: Decodable {
     let name: String
     let id: Int
+    let time: Double
     let main: CityMainInfo
     let sys: CitySysInfo
     let weather: [CityWeather]
+    let timeZone: Double
+    
+    
+    enum CodingKeys: String, CodingKey {
+        case time = "dt"
+        case timeZone = "timezone"
+        case name
+        case id
+        case main
+        case sys
+        case weather
+    }
 }
 
 struct CityMainInfo: Decodable {
@@ -29,8 +42,8 @@ struct CityMainInfo: Decodable {
     }
 }
 
-struct CitySysInfo: Codable {
-    let timezone: Int?
+struct CitySysInfo: Decodable {
+    let country: String
 }
 
 struct CityWeather: Decodable {

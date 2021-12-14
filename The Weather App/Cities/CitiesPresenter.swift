@@ -14,9 +14,9 @@ final class CitiesPresenter {
 
     private let router: CitiesRouterInput
     private let interactor: CitiesInteractorInput
-    
-    private var viewModel: [CityViewModel] = []
 
+    private var viewModel: [CityViewModel] = []
+    private var loadedCities = UserDefaults.standard.array(forKey: "loadedCities") as? [String] ?? []
 
     init(router: CitiesRouterInput, interactor: CitiesInteractorInput) {
         self.router = router
@@ -36,6 +36,8 @@ extension CitiesPresenter: CitiesViewOutput {
     func didTapAddButton() {
         router.showAddCity { [weak interactor] text in
             interactor?.loadCity(with: text)
+            self.loadedCities.append(text)
+            UserDefaults.standard.set(self.loadedCities, forKey: "loadedCities")
         }
     }
     
@@ -48,8 +50,13 @@ extension CitiesPresenter: CitiesViewOutput {
     }
     
     func didLoadView() {
-        interactor.loadCities()
+        loadedCities.append("London")
+        UserDefaults.standard.set(loadedCities, forKey: "loadedCities")
+        for element in loadedCities {
+            interactor.loadCity(with: element)
+        }
     }
+    
 }
 
 extension CitiesPresenter: CitiesInteractorOutput {

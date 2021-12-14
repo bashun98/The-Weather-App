@@ -42,7 +42,7 @@ class CityTableViewCell: UITableViewCell {
     private func setupFonts() {
         timeLabel.font = .systemFont(ofSize: 26, weight: .semibold)
         titleLabel.font = .systemFont(ofSize: 40, weight: .medium)
-        tempLabel.font = .systemFont(ofSize: 26, weight: .medium)
+        tempLabel.font = .systemFont(ofSize: 36, weight: .medium)
     }
     
     private func setupContainer() {
@@ -60,23 +60,23 @@ class CityTableViewCell: UITableViewCell {
             .horizontally(12)
             .vertically(7)
         titleLabel.pin
-            .bottom(8)
+            .top(8)
             .left(12)
             .height(40)
             .sizeToFit(.height)
         timeLabel.pin
-            .top(12)
+            .vCenter()
             .left(12)
             .height(20)
             .sizeToFit(.height)
-        iconImageView.pin
-            .size(60)
-            .center()
         tempLabel.pin
             .right(12)
             .height(64)
             .sizeToFit(.height)
             .vCenter()
+        iconImageView.pin
+            .size(60)
+            .before(of: tempLabel, aligned: .bottom)
     }
     
     public func configure(with viewModel: CityViewModel) {

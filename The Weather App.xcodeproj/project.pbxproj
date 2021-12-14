@@ -72,6 +72,7 @@
 				203486392757613F0066D6FA /* CitiesInteractor.swift */,
 				2034863A2757613F0066D6FA /* CitiesContainer.swift */,
 				203486452757724F0066D6FA /* CityViewModel.swift */,
+				2034864327576A3F0066D6FA /* CityTableViewCell.swift */,
 			);
 			path = Cities;
 			sourceTree = "<group>";
@@ -107,7 +108,6 @@
 				20C87A1A275145E000CC1FC5 /* Info.plist */,
 				20C87A2C27514A2300CC1FC5 /* WeatherManager.swift */,
 				20348641275768020066D6FA /* Model.swift */,
-				2034864327576A3F0066D6FA /* CityTableViewCell.swift */,
 			);
 			path = "The Weather App";
 			sourceTree = "<group>";

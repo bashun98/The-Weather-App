@@ -12,17 +12,23 @@ struct CityViewModel {
     let time: String
     let icon: URL?
     let temp: String
+    let country: String
     
     init(with city: CityResponse) {
         let dateFormatter = DateFormatter()
-        dateFormatter.timeStyle = .short
+        dateFormatter.timeZone = TimeZone(abbreviation: "GMT")
+        dateFormatter.dateFormat = "HH:mm"
+        
+        let date = Date(timeIntervalSince1970: city.time + city.timeZone)
+               
         let iconString = city.weather.first?.icon ?? ""
         let urlString = URL(string: "https://openweathermap.org/img/wn/\(iconString)@2x.png")
         
         self.title = city.name
-        self.time = dateFormatter.string(from: .init())
+        self.time = dateFormatter.string(from: date)
         self.icon = urlString
         self.temp = "\(Int(city.main.temp))˚C"
+        self.country = city.sys.country
         
     }
 }
