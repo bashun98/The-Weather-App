@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		202155242769C8170002DBD2 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 202155232769C8170002DBD2 /* GoogleService-Info.plist */; };
 		2034863B2757613F0066D6FA /* CitiesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203486352757613F0066D6FA /* CitiesPresenter.swift */; };
 		2034863C275761400066D6FA /* CitiesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203486362757613F0066D6FA /* CitiesRouter.swift */; };
 		2034863D275761400066D6FA /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203486372757613F0066D6FA /* CitiesViewController.swift */; };
@@ -27,6 +28,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		202155232769C8170002DBD2 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		203486352757613F0066D6FA /* CitiesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesPresenter.swift; sourceTree = "<group>"; };
 		203486362757613F0066D6FA /* CitiesRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesRouter.swift; sourceTree = "<group>"; };
 		203486372757613F0066D6FA /* CitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				20C87A1A275145E000CC1FC5 /* Info.plist */,
 				20C87A2C27514A2300CC1FC5 /* WeatherManager.swift */,
 				20348641275768020066D6FA /* Model.swift */,
+				202155232769C8170002DBD2 /* GoogleService-Info.plist */,
 			);
 			path = "The Weather App";
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				20C87A19275145E000CC1FC5 /* LaunchScreen.storyboard in Resources */,
+				202155242769C8170002DBD2 /* GoogleService-Info.plist in Resources */,
 				20C87A16275145E000CC1FC5 /* Assets.xcassets in Resources */,
 				20C87A14275145D900CC1FC5 /* Main.storyboard in Resources */,
 			);
@@ -420,7 +424,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Beugene.The-Weather-App";
+				PRODUCT_BUNDLE_IDENTIFIER = com.theweatherapp.eugene;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -450,7 +454,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.Beugene.The-Weather-App";
+				PRODUCT_BUNDLE_IDENTIFIER = com.theweatherapp.eugene;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

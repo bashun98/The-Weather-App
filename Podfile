@@ -6,6 +6,9 @@ target 'The Weather App' do
   use_frameworks!
   pod 'PinLayout'
   pod 'Kingfisher', '~> 7.0'
+  pod 'Firebase/Analytics'
+  pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
   # Pods for The Weather App
 
 end
