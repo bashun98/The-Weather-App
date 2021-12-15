@@ -11,13 +11,13 @@ import Foundation
 final class CitiesPresenter {
     weak var view: CitiesViewInput?
     weak var moduleOutput: CitiesModuleOutput?
-
+    
     private let router: CitiesRouterInput
     private let interactor: CitiesInteractorInput
-
+    
     private var viewModel: [CityViewModel] = []
-    private var loadedCities = UserDefaults.standard.array(forKey: "loadedCities") as? [String] ?? []
-
+    private var loadedCities = UserDefaults.standard.array(forKey: "addedCities") as? [String] ?? []
+    
     init(router: CitiesRouterInput, interactor: CitiesInteractorInput) {
         self.router = router
         self.interactor = interactor
@@ -37,7 +37,7 @@ extension CitiesPresenter: CitiesViewOutput {
         router.showAddCity { [weak interactor] text in
             interactor?.loadCity(with: text)
             self.loadedCities.append(text)
-            UserDefaults.standard.set(self.loadedCities, forKey: "loadedCities")
+            UserDefaults.standard.set(self.loadedCities, forKey: "addedCities")
         }
     }
     
@@ -50,8 +50,6 @@ extension CitiesPresenter: CitiesViewOutput {
     }
     
     func didLoadView() {
-        loadedCities.append("London")
-        UserDefaults.standard.set(loadedCities, forKey: "loadedCities")
         for element in loadedCities {
             interactor.loadCity(with: element)
         }
@@ -69,7 +67,7 @@ extension CitiesPresenter: CitiesInteractorOutput {
         viewModel.append(CityViewModel(with: city))
         view?.reloadData()
     }
-        
+    
     func didFail(with error: Error) {
         router.showError(with: error.localizedDescription)
     }
