@@ -25,10 +25,12 @@ protocol CitiesViewOutput: AnyObject {
     func didLoadView()
     func didTapAddButton()
     func didRefresh()
+    func deleteData(at index: Int)
+    func didSelectItem(at index: Int)
 }
 
 protocol CitiesInteractorInput: AnyObject {
-    func loadCities()
+   // func loadCities()
     func loadCity(with name: String)
 }
 
@@ -41,4 +43,5 @@ protocol CitiesInteractorOutput: AnyObject {
 protocol CitiesRouterInput: AnyObject {
     func showAddCity(onAdd: @escaping (String) -> Void)
     func showError(with text: String)
+    func openCity(model: CityViewModel)
 }

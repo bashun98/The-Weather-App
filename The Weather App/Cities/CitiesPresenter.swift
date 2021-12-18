@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 final class CitiesPresenter {
     weak var view: CitiesViewInput?
@@ -28,16 +29,29 @@ extension CitiesPresenter: CitiesModuleInput {
 }
 
 extension CitiesPresenter: CitiesViewOutput {
+    func didSelectItem(at index: Int) {
+        let model = viewModel[index]
+        router.openCity(model: model)
+    }
+    
+    func deleteData(at index: Int) {
+        loadedCities.remove(at: index)
+        viewModel.remove(at: index)
+        UserDefaults.standard.set(loadedCities, forKey: "addedCities")
+        view?.reloadData()
+    }
     
     func didRefresh() {
-        interactor.loadCities()
+        view?.reloadData()
     }
     
     func didTapAddButton() {
         router.showAddCity { [weak interactor] text in
-            interactor?.loadCity(with: text)
-            self.loadedCities.append(text)
-            UserDefaults.standard.set(self.loadedCities, forKey: "addedCities")
+            if !self.loadedCities.contains(text) {
+                interactor?.loadCity(with: text)
+            } else {
+                self.router.showError(with: "City has already been added")
+            }
         }
     }
     
@@ -64,11 +78,18 @@ extension CitiesPresenter: CitiesInteractorOutput {
     }
     
     func didLoad(city: CityResponse) {
-        viewModel.append(CityViewModel(with: city))
-        view?.reloadData()
+        if !loadedCities.contains(city.name) {
+            loadedCities.append(city.name)
+            UserDefaults.standard.set(loadedCities, forKey: "addedCities")
+            viewModel.append(CityViewModel(with: city))
+            view?.reloadData()
+        } else {
+            viewModel.append(CityViewModel(with: city))
+            view?.reloadData()
+        }
     }
     
     func didFail(with error: Error) {
-        router.showError(with: error.localizedDescription)
+        router.showError(with: "City does not exist")
     }
 }

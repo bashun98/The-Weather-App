@@ -6,13 +6,19 @@
 //
 
 import Foundation
+import FirebaseStorage
 
 struct CityViewModel {
     let title: String
     let time: String
-    let icon: URL?
     let temp: String
     let country: String
+    let image: StorageReference?
+    let pressure: String
+    let humidity: String
+    let tempMax: String
+    let tempMin: String
+    let feelsLike: String
     
     init(with city: CityResponse) {
         let dateFormatter = DateFormatter()
@@ -21,14 +27,19 @@ struct CityViewModel {
         
         let date = Date(timeIntervalSince1970: city.time + city.timeZone)
                
-        let iconString = city.weather.first?.icon ?? ""
-        let urlString = URL(string: "https://openweathermap.org/img/wn/\(iconString)@2x.png")
+        let storageRef = Storage.storage().reference()
+        let imageString = city.weather.first?.image ?? ""
+        let starsRef = storageRef.child("\(imageString).jpg")
         
         self.title = city.name
         self.time = dateFormatter.string(from: date)
-        self.icon = urlString
         self.temp = "\(Int(city.main.temp))˚C"
         self.country = city.sys.country
-        
+        self.image = starsRef
+        self.humidity = "\(city.main.humidity) %"
+        self.pressure = "\(city.main.pressure) MPa"
+        self.tempMax = "\(city.main.tempMax)˚C"
+        self.tempMin = "\(city.main.tempMin)˚C"
+        self.feelsLike = "\(city.main.feelsLike)˚C"
     }
 }

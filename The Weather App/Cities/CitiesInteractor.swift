@@ -18,19 +18,6 @@ final class CitiesInteractor {
 }
 
 extension CitiesInteractor: CitiesInteractorInput {
-    func loadCities() {
-        weatherManager.loadCities(with: ["524901", "292223"]) { [weak output] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let response):
-                    output?.didLoad(cities: response.list)
-                case .failure(let error):
-                    output?.didFail(with: error)
-                }
-            }
-        }
-    }
-    
     func loadCity(with name: String) {
         weatherManager.loadCity(with: name) { [weak output] result in
             DispatchQueue.main.async {
@@ -43,5 +30,31 @@ extension CitiesInteractor: CitiesInteractorInput {
             }
         }
     }
+    
+//    func loadCities() {
+//        weatherManager.loadCities(with: ["524901", "292223"]) { [weak output] result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let response):
+//                    output?.didLoad(cities: response.list)
+//                case .failure(let error):
+//                    output?.didFail(with: error)
+//                }
+//            }
+//        }
+//    }
+    
+//    func loadCity(with name: String) {
+//        weatherManager.loadCity(with: name) { [weak output] result in
+//            DispatchQueue.main.async {
+//                switch result {
+//                case .success(let response):
+//                    output?.didLoad(city: response)
+//                case .failure(let error):
+//                    output?.didFail(with: error)
+//                }
+//            }
+//        }
+//    }
     
 }

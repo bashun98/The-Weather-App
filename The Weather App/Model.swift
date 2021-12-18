@@ -19,6 +19,7 @@ struct CityResponse: Decodable {
     let sys: CitySysInfo
     let weather: [CityWeather]
     let timeZone: Double
+    let visibility: Int
     
     
     enum CodingKeys: String, CodingKey {
@@ -29,16 +30,25 @@ struct CityResponse: Decodable {
         case main
         case sys
         case weather
+        case visibility
     }
 }
 
 struct CityMainInfo: Decodable {
     let temp: Float
     let feelsLike: Float
+    let pressure: Float
+    let humidity: Float
+    let tempMax: Float
+    let tempMin: Float
     
     enum CodingKeys: String, CodingKey {
         case feelsLike = "feels_like"
+        case tempMax = "temp_max"
+        case tempMin = "temp_min"
         case temp
+        case pressure
+        case humidity
     }
 }
 
@@ -47,5 +57,9 @@ struct CitySysInfo: Decodable {
 }
 
 struct CityWeather: Decodable {
-    let icon: String
+    let image: String
+    
+    enum CodingKeys: String, CodingKey {
+        case image = "main"
+    }
 }

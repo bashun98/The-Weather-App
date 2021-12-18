@@ -72,6 +72,7 @@ final class WeatherManager: WeatherManagerDiscription {
                 print(result)
             } catch let error {
                 completion(.failure(error))
+                print(error)
             }
         }
         task.resume()

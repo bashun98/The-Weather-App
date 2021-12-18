@@ -14,7 +14,7 @@ final class CitiesRouter {
 
 extension CitiesRouter: CitiesRouterInput {
     func showError(with text: String) {
-        let alertController = UIAlertController(title: "Error", message: nil, preferredStyle: .alert)
+        let alertController = UIAlertController(title: text, message: nil, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
         viewController?.present(alertController, animated: true, completion: nil)
     }
@@ -28,6 +28,14 @@ extension CitiesRouter: CitiesRouterInput {
             onAdd(text)
         }))
         viewController?.present(alertController, animated: true, completion: nil)
+    }
+    func openCity(model: CityViewModel) {
+//        let viewController = UIViewController()
+//        viewController.title = model.title
+//        viewController.view.backgroundColor = .systemBackground
+        
+        let VC = CityViewController(model: model)
+        viewController?.present(UINavigationController(rootViewController: VC), animated: true, completion: nil)
     }
     
 }

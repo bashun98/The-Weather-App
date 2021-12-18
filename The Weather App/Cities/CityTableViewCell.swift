@@ -7,7 +7,7 @@
 
 import UIKit
 import PinLayout
-import Kingfisher
+import FirebaseStorageUI
 
 class CityTableViewCell: UITableViewCell {
     private let titleLabel = UILabel()
@@ -15,6 +15,7 @@ class CityTableViewCell: UITableViewCell {
     private let iconImageView = UIImageView()
     private let timeLabel = UILabel()
     private let containerView = UIView()
+    private let countryLabel = UILabel()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -33,16 +34,25 @@ class CityTableViewCell: UITableViewCell {
     }
     
     private func addViews() {
-        [titleLabel,tempLabel,iconImageView,timeLabel].forEach {
+        contentView.addSubview(iconImageView)
+        iconImageView.addSubview(containerView)
+        [titleLabel, tempLabel, timeLabel, countryLabel].forEach {
             containerView.addSubview($0)
         }
-        contentView.addSubview(containerView)
+       // contentView.addSubview(containerView)
+        iconImageView.clipsToBounds = true
+        iconImageView.contentMode = .scaleAspectFill
+        iconImageView.layer.cornerRadius = 8
     }
     
     private func setupFonts() {
-        timeLabel.font = .systemFont(ofSize: 26, weight: .semibold)
-        titleLabel.font = .systemFont(ofSize: 40, weight: .medium)
+        timeLabel.font = .systemFont(ofSize: 20, weight: .semibold)
+        titleLabel.font = .systemFont(ofSize: 30, weight: .medium)
         tempLabel.font = .systemFont(ofSize: 36, weight: .medium)
+        countryLabel.font = .systemFont(ofSize: 30, weight: .medium)
+        [titleLabel, tempLabel, timeLabel, countryLabel].forEach {
+            $0.textColor = .white
+        }
     }
     
     private func setupContainer() {
@@ -51,22 +61,28 @@ class CityTableViewCell: UITableViewCell {
         containerView.layer.shadowOffset = .init(width: 0.5, height: 0.5)
         containerView.layer.shadowOpacity = 0.8
         containerView.layer.cornerRadius = 8
-        containerView.backgroundColor = .white
+        containerView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         containerView.pin
-            .horizontally(12)
-            .vertically(7)
+            .horizontally()
+            .vertically()
+        iconImageView.pin
+            .horizontally(8)
+            .vertically(4)
         titleLabel.pin
             .top(8)
             .left(12)
             .height(40)
             .sizeToFit(.height)
+        countryLabel.pin
+            .height(40)
+            .sizeToFit(.height)
+            .after(of: titleLabel, aligned: .bottom)
         timeLabel.pin
-            .vCenter()
-            .left(12)
+            .below(of: titleLabel, aligned: .left)
             .height(20)
             .sizeToFit(.height)
         tempLabel.pin
@@ -74,16 +90,15 @@ class CityTableViewCell: UITableViewCell {
             .height(64)
             .sizeToFit(.height)
             .vCenter()
-        iconImageView.pin
-            .size(60)
-            .before(of: tempLabel, aligned: .bottom)
     }
     
     public func configure(with viewModel: CityViewModel) {
-        titleLabel.text = viewModel.title
+        titleLabel.text = viewModel.title + ", "
         timeLabel.text = viewModel.time
         tempLabel.text = viewModel.temp
-        iconImageView.kf.setImage(with: viewModel.icon)
-        
+        iconImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
+        iconImageView.sd_setImage(with: viewModel.image!)
+        //iconImageView.sd_Image(
+        countryLabel.text = viewModel.country
     }
 }

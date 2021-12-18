@@ -20,7 +20,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = UINavigationController(rootViewController: viewController)
         window.makeKeyAndVisible()
         self.window = window
-        print(UserDefaults.standard.array(forKey: "addedCities"))
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
