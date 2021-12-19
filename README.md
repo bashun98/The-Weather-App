@@ -6,6 +6,7 @@ Used:
 * API Openweather
 * URLSession for Networking
 * Firebase
+* No storyboards
 
 **Привет!**
 
