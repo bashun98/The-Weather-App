@@ -16,6 +16,9 @@ Used:
 ![](https://s1.hostingkartinok.com/uploads/images/2021/12/4257e2e2ed929e92be0a9675b7baa3dc.jpg)
 ![](https://s1.hostingkartinok.com/uploads/images/2021/12/bcd777a2e9de621a6dba7fff23e24e19.jpg)
 
+Чтобы подробнее ознакомиться с основными показателями, нажми интересующий тебя город и ты получишь:
+
+![]()https://s1.hostingkartinok.com/uploads/images/2021/12/297254bbce5fdd97eee6e648f56660bf.jpg
 
 
 
