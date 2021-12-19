@@ -5,6 +5,7 @@ Used:
 * VIPER
 * API Openweather
 * URLSession for Networking
+* Firebase
 
 **Привет**
 
