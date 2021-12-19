@@ -36,11 +36,11 @@ class CityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        container.backgroundColor = .red
         view.addSubview(container)
         [cityNameLabel, cityImageView, humidityLabel, pressureLabel, feelsLikeLabel, tempLabel, tempMaxLabel, tempMinLabel].forEach {
             container.addSubview($0)
         }
+        cityImageView.backgroundColor = .red
         setupViews()
     }
     
@@ -61,8 +61,8 @@ class CityViewController: UIViewController {
         cityImageView.pin
             .hCenter()
             .top(50)
+            .width(of: container)
             .height(200)
-            .width(UIScreen.main.bounds.width)
         tempLabel.pin
             .center()
             .sizeToFit()
@@ -97,14 +97,16 @@ class CityViewController: UIViewController {
         tempMaxLabel.text = "Max temp. = " + model.tempMax
         tempMinLabel.text = "Min temp. = " + model.tempMin
         cityImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        cityImageView.sd_setImage(with: model.image!)
+        cityImageView.sd_setImage(with: model.image)
+
+        cityImageView.contentMode = .scaleAspectFill
+        cityImageView.clipsToBounds = true
         
         cityNameLabel.font = .systemFont(ofSize: 20, weight: .bold)
         cityNameLabel.textColor = .black
         
         [humidityLabel, pressureLabel, feelsLikeLabel, tempLabel, tempMaxLabel, tempMinLabel].forEach {
             $0.font = .systemFont(ofSize: 25)
-            $0.translatesAutoresizingMaskIntoConstraints = true
             $0.textColor = .black
         }
     }

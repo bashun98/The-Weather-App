@@ -13,7 +13,7 @@ struct CityViewModel {
     let time: String
     let temp: String
     let country: String
-    let image: StorageReference?
+    let image: StorageReference
     let pressure: String
     let humidity: String
     let tempMax: String

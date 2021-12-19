@@ -37,9 +37,9 @@ class CityTableViewCell: UITableViewCell {
         contentView.addSubview(iconImageView)
         iconImageView.addSubview(containerView)
         [titleLabel, tempLabel, timeLabel, countryLabel].forEach {
-            containerView.addSubview($0)
+            iconImageView.addSubview($0)
         }
-       // contentView.addSubview(containerView)
+
         iconImageView.clipsToBounds = true
         iconImageView.contentMode = .scaleAspectFill
         iconImageView.layer.cornerRadius = 8
@@ -56,22 +56,23 @@ class CityTableViewCell: UITableViewCell {
     }
     
     private func setupContainer() {
-        containerView.layer.shadowColor = UIColor.black.cgColor
-        containerView.layer.shadowRadius = 0.5
-        containerView.layer.shadowOffset = .init(width: 0.5, height: 0.5)
-        containerView.layer.shadowOpacity = 0.8
-        containerView.layer.cornerRadius = 8
+//        containerView.layer.shadowColor = UIColor.black.cgColor
+//        containerView.layer.shadowRadius = 0.5
+//        containerView.layer.shadowOffset = .init(width: 0.5, height: 0.5)
+//        containerView.layer.shadowOpacity = 0.8
+//        containerView.layer.cornerRadius = 8
         containerView.backgroundColor = UIColor.black.withAlphaComponent(0.2)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        containerView.pin
-            .horizontally()
-            .vertically()
+        
         iconImageView.pin
             .horizontally(8)
             .vertically(4)
+        containerView.pin
+            .horizontally()
+            .vertically()
         titleLabel.pin
             .top(8)
             .left(12)
@@ -97,8 +98,7 @@ class CityTableViewCell: UITableViewCell {
         timeLabel.text = viewModel.time
         tempLabel.text = viewModel.temp
         iconImageView.sd_imageIndicator = SDWebImageActivityIndicator.gray
-        iconImageView.sd_setImage(with: viewModel.image!)
-        //iconImageView.sd_Image(
+        iconImageView.sd_setImage(with: viewModel.image)
         countryLabel.text = viewModel.country
     }
 }
