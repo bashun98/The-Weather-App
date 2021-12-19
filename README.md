@@ -13,9 +13,9 @@ Used:
 
 Чтобы начать, нажми на + и добавь интересующий тебя город:
 
-![](https://s1.hostingkartinok.com/uploads/images/2021/12/d6d4ad90dce42f65715ebfaa9dc058aa.jpg)
-![](https://s1.hostingkartinok.com/uploads/images/2021/12/4257e2e2ed929e92be0a9675b7baa3dc.jpg)
-![](https://s1.hostingkartinok.com/uploads/images/2021/12/bcd777a2e9de621a6dba7fff23e24e19.jpg)
+![](https://s1.hostingkartinok.com/uploads/images/2021/12/2ce2bc3ba6e1ec80bc4c1eb6e618f25e.jpg)
+![](https://s1.hostingkartinok.com/uploads/images/2021/12/577b502caa57b05e96f0e6a4c4d80c6d.jpg)
+![](https://s1.hostingkartinok.com/uploads/images/2021/12/717ad2aa83e078be8b93cf7c08a761cd.jpg)
 
 Чтобы подробнее ознакомиться с основными показателями, нажми на интересующий тебя город и ты получишь:
 
