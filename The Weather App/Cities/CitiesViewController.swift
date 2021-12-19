@@ -80,7 +80,7 @@ extension CitiesViewController: CitiesViewInput {
 
 extension CitiesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let message: String = "Click on the ➕ to add a city. If you want to delete a city, just swipe left."
+        let message: String = "Click on the ➕ to add a city.\nIf you want to delete a city, just swipe left."
         tableView.setEmptyMessage(message, output.itemsCount == 0)
         return output.itemsCount
     }

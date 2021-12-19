@@ -40,7 +40,6 @@ class CityViewController: UIViewController {
         [cityNameLabel, cityImageView, humidityLabel, pressureLabel, feelsLikeLabel, tempLabel, tempMaxLabel, tempMinLabel].forEach {
             container.addSubview($0)
         }
-        cityImageView.backgroundColor = .red
         setupViews()
     }
     
